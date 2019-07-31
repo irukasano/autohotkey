@@ -37,15 +37,16 @@ WinActivate ahk_id %original%
 Return
 
 ; ==========================================================
-; Win+Alt+s で Station をアクティヴにする
+; Ctrl+Alt+s で Station をアクティヴにする
 ; ==========================================================
-#!s::
+^!s::GoSub, FocusOrStartStation
 
-Process, Exist, station.exe
-If(ErrorLevel) {
-    WinActivate, ahk_pid %ErrorLevel%
-}
-
+;; This will probably not act as intended if you have more than one ConEmu64 process running
+FocusOrStartStation:
+If WinExist("ahk_exe Station.exe")
+    WinActivate
+Else
+    Run,C:\Users\sano\AppData\Local\browserX\Station.exe
 Return
 
 ; Save current window
@@ -68,10 +69,10 @@ Return
 
 
 ; ==========================================================
-; Win+Alt+c で ConEmu をアクティヴにする
+; Ctrl+Alt+c で ConEmu をアクティヴにする
 ; cf) https://gist.github.com/bender-the-greatest/5ef4aabbc8f1de3d740dd01483b8110a
 ; ==========================================================
-#!c::GoSub, FocusOrStartConEmu
+^!t::GoSub, FocusOrStartConEmu
 
 ;; This will probably not act as intended if you have more than one ConEmu64 process running
 FocusOrStartConemu:
@@ -80,12 +81,4 @@ If WinExist("ahk_exe ConEmu64.exe")
 Else
     Run,%A_ProgramFiles%\ConEmu\ConEmu64.exe
 Return
-
-; ==========================================================
-; ConEmu の指定のタブの１つまえのコマンドを実行する(fish shell前提)
-; Win+Alt+p + 1-9
-; ==========================================================
-; #!p::
-
-; ?? どうやって現在のタブを取得して戻れるのか？
 
