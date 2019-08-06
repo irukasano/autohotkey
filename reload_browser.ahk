@@ -82,3 +82,22 @@ Else
     Run,%A_ProgramFiles%\ConEmu\ConEmu64.exe
 Return
 
+
+
+; ==========================================================
+; Alt+Shift+F はブラウザにそのキーを送る
+; ==========================================================
+#+f::GoSub, SendKeyAs1
+
+SendKeyAs1:
+Process, Exist, chrome.exe
+If(ErrorLevel) {
+	pid = %ErrorLevel%
+	IfWinNotActive, ahk_pid %pid%
+	{
+    	WinActivate, ahk_pid %pid%
+        Send, !+f
+    }
+}
+
+Return
