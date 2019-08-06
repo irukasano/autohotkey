@@ -93,11 +93,8 @@ SendKeyAs1:
 Process, Exist, chrome.exe
 If(ErrorLevel) {
 	pid = %ErrorLevel%
-	IfWinNotActive, ahk_pid %pid%
-	{
-    	WinActivate, ahk_pid %pid%
-        Send, !+f
-    }
+	WinActivate, ahk_pid %pid%
+    Send, !+f
 }
 
 Return
