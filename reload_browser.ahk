@@ -1,4 +1,4 @@
-; ==========================================================
+﻿; ==========================================================
 ; Alt + b でアクティヴでないブラウザをF5する
 ; ==========================================================
 !b::
@@ -33,20 +33,20 @@ Process, Exist, iexplore.exe
 ; ---------------------------------------
 
 ; Return to original window
-WinActivate ahk_id %original%
+;WinActivate ahk_id %original%
 Return
 
 ; ==========================================================
-; Ctrl+Alt+s で Station をアクティヴにする
+; Ctrl+Alt+b で Biscuit をアクティヴにする
 ; ==========================================================
-^!s::GoSub, FocusOrStartStation
+^!b::GoSub, FocusOrStartStation
 
 ;; This will probably not act as intended if you have more than one ConEmu64 process running
 FocusOrStartStation:
-If WinExist("ahk_exe Station.exe")
+If WinExist("ahk_exe Biscuit.exe")
     WinActivate
 Else
-    Run,C:\Users\sano\AppData\Local\browserX\Station.exe
+    Run,C:\Users\sano\AppData\Local\Programs\biscuit\Biscuit.exe
 Return
 
 ; Save current window
