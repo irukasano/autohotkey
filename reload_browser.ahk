@@ -49,6 +49,21 @@ Else
     Run,C:\Users\sano\AppData\Local\Programs\biscuit\Biscuit.exe
 Return
 
+
+; ==========================================================
+; Ctrl+Alt+a で AS/R をアクティヴにする
+; ==========================================================
+^!a::GoSub, FocusOrStartASR
+
+;; This will probably not act as intended if you have more than one ConEmu64 process running
+FocusOrStartASR:
+If WinExist("ahk_exe Asr.exe")
+    WinActivate
+Else
+    Run,C:\Programs\ASR\Asr.exe
+Return
+
+
 ; Save current window
 ; WinGet, original, , A
 
