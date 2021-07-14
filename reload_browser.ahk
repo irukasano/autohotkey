@@ -78,6 +78,19 @@ Else
 Return
 
 ; ==========================================================
+; Ctrl+Alt+r で Rambox をアクティヴにする
+; ==========================================================
+^!r::GoSub, FocusOrStartRambox
+
+;; This will probably not act as intended if you have more than one ConEmu64 process running
+FocusOrStartRambox:
+If WinExist("ahk_exe Rambox.exe")
+    WinActivate
+Else
+    Run,C:\Users\sano\AppData\Local\Programs\Rambox\Rambox.exe
+Return
+
+; ==========================================================
 ; Ctrl+Alt+C で chrome をアクティヴにする
 ; ==========================================================
 ^!c::GoSub, FocusOrStartChrome
