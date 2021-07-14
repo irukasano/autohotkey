@@ -120,13 +120,13 @@ Return
 ; ==========================================================
 ; Ctrl+Alt+R で acrobatReaderDC をアクティヴにする
 ; ==========================================================
-^!r::GoSub, FocusAcrobatReader
+;^!r::GoSub, FocusAcrobatReader
 
 ;; This will probably not act as intended if you have more than one ConEmu64 process running
-FocusAcrobatReader:
-If WinExist("ahk_exe AcroRd32.exe")
-    WinActivate
-Return
+;FocusAcrobatReader:
+;If WinExist("ahk_exe AcroRd32.exe")
+;    WinActivate
+;Return
 
 ; ==========================================================
 ; Ctrl+Alt+T で ConEmu をアクティヴにする
