@@ -1,4 +1,17 @@
 ﻿; ==========================================================
+; Alt + f8 で Alt + →、↑、エンター、Alt + ← をする
+; ==========================================================
+#IfWinActive,ahk_class CASCADIA_HOSTING_WINDOW_CLASS
+!F8::
+Send !{Right}
+Send {Up}
+Send {Enter}
+Send !{Left}
+Return
+#IfWinActive
+
+
+; ==========================================================
 ; Alt + b でアクティヴでないブラウザをF5する
 ; ==========================================================
 !b::
@@ -115,33 +128,18 @@ Else
     Run,"C:\Program Files\Microsoft Office 15\root\office15\EXCEL.EXE"
 Return
 
-
-
 ; ==========================================================
-; Ctrl+Alt+R で acrobatReaderDC をアクティヴにする
+; Ctrl+Alt+W で Windows Terminal をアクティヴにする
 ; ==========================================================
-;^!r::GoSub, FocusAcrobatReader
+^!w::GoSub, FocusOrStartWt
 
-;; This will probably not act as intended if you have more than one ConEmu64 process running
-;FocusAcrobatReader:
-;If WinExist("ahk_exe AcroRd32.exe")
-;    WinActivate
-;Return
-
-; ==========================================================
-; Ctrl+Alt+T で ConEmu をアクティヴにする
-; cf) https://gist.github.com/bender-the-greatest/5ef4aabbc8f1de3d740dd01483b8110a
-; ==========================================================
-^!t::GoSub, FocusOrStartConEmu
-
-;; This will probably not act as intended if you have more than one ConEmu64 process running
-FocusOrStartConemu:
-If WinExist("ahk_exe ConEmu64.exe")
+;; This will probably not act as intended if you have more than one wt process running
+FocusOrStartWt:
+If WinExist("ahk_class CASCADIA_HOSTING_WINDOW_CLASS"){
     WinActivate
-Else
-    Run,%A_ProgramFiles%\ConEmu\ConEmu64.exe
-Return
+}
 
+Return
 
 
 ; ==========================================================
