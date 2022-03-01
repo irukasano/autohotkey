@@ -50,21 +50,6 @@ Process, Exist, iexplore.exe
 Return
 
 ; ==========================================================
-; Alt+Shift+F はブラウザにそのキーを送る
-; ==========================================================
-;#+f::GoSub, SendKeyAs1
-;
-;SendKeyAs1:
-;Process, Exist, chrome.exe
-;If(ErrorLevel) {
-;	pid = %ErrorLevel%
-;	WinActivate, ahk_pid %pid%
-;    Send, !+f
-;}
-;
-;Return
-
-; ==========================================================
 ; Ctrl+Alt+a で AS/R をアクティヴにする
 ; ==========================================================
 ^!a::GoSub, FocusOrStartASR
@@ -88,19 +73,6 @@ If WinExist("ahk_exe Biscuit.exe")
     WinActivate
 Else
     Run,C:\Users\sano\AppData\Local\Programs\biscuit\Biscuit.exe
-Return
-
-; ==========================================================
-; Ctrl+Alt+r で Rambox をアクティヴにする
-; ==========================================================
-^!r::GoSub, FocusOrStartRambox
-
-;; This will probably not act as intended if you have more than one ConEmu64 process running
-FocusOrStartRambox:
-If WinExist("ahk_exe Rambox.exe")
-    WinActivate
-Else
-    Run,C:\Users\sano\AppData\Local\Programs\Rambox\Rambox.exe
 Return
 
 ; ==========================================================
