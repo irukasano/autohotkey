@@ -49,20 +49,6 @@ Process, Exist, iexplore.exe
 ;WinActivate ahk_id %original%
 Return
 
-; ==========================================================
-; Alt+Shift+F はブラウザにそのキーを送る
-; ==========================================================
-;#+f::GoSub, SendKeyAs1
-;
-;SendKeyAs1:
-;Process, Exist, chrome.exe
-;If(ErrorLevel) {
-;	pid = %ErrorLevel%
-;	WinActivate, ahk_pid %pid%
-;    Send, !+f
-;}
-;
-;Return
 
 ; ==========================================================
 ; Ctrl+Alt+a で AS/R をアクティヴにする
@@ -91,19 +77,6 @@ Else
 Return
 
 ; ==========================================================
-; Ctrl+Alt+r で Rambox をアクティヴにする
-; ==========================================================
-^!r::GoSub, FocusOrStartRambox
-
-;; This will probably not act as intended if you have more than one ConEmu64 process running
-FocusOrStartRambox:
-If WinExist("ahk_exe Rambox.exe")
-    WinActivate
-Else
-    Run,C:\Users\sano\AppData\Local\Programs\Rambox\Rambox.exe
-Return
-
-; ==========================================================
 ; Ctrl+Alt+C で chrome をアクティヴにする
 ; ==========================================================
 ^!c::GoSub, FocusOrStartChrome
@@ -120,12 +93,23 @@ Return
 ; ==========================================================
 ^!e::GoSub, FocusOrStartExcel
 
-;; This will probably not act as intended if you have more than one ConEmu64 process running
 FocusOrStartExcel:
 If WinExist("ahk_exe Excel.exe")
     WinActivate
 Else
     Run,"C:\Program Files\Microsoft Office 15\root\office15\EXCEL.EXE"
+Return
+
+; ==========================================================
+; Ctrl+Alt+k で KeepassXC をアクティヴにする
+; ==========================================================
+^!k::GoSub, FocusOrStartKeepassxc
+
+FocusOrStartKeepassxc:
+If WinExist("ahk_exe KeePassXC.exe")
+    WinActivate
+Else
+    Run,C:\Program Files\KeePassXC\KeePassXC.exe
 Return
 
 ; ==========================================================
