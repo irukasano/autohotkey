@@ -1,5 +1,6 @@
 ﻿; ==========================================================
 ; Alt + f8 で Alt + →、↑、エンター、Alt + ← をする
+; MSTerminal + Vim での phpunit 用
 ; ==========================================================
 #IfWinActive,ahk_class CASCADIA_HOSTING_WINDOW_CLASS
 !F8::
@@ -63,16 +64,15 @@ Else
 Return
 
 ; ==========================================================
-; Ctrl+Alt+b で Biscuit をアクティヴにする
+; Ctrl+Alt+v で Vavaldi をアクティヴにする
 ; ==========================================================
-^!b::GoSub, FocusOrStartStation
+^!v::GoSub, FocusOrStartStation
 
-;; This will probably not act as intended if you have more than one ConEmu64 process running
 FocusOrStartStation:
-If WinExist("ahk_exe Biscuit.exe")
+If WinExist("ahk_exe vivaldi.exe")
     WinActivate
 Else
-    Run,C:\Users\sano\AppData\Local\Programs\biscuit\Biscuit.exe
+    Run,E:\Documents\nextCloud\sano\Documents\Vivaldi\Application\vivaldi.exe
 Return
 
 ; ==========================================================
@@ -112,7 +112,19 @@ Else
 Return
 
 ; ==========================================================
-; Ctrl+Alt+W で Windows Terminal をアクティヴにする
+; Ctrl+Alt+b で Bitwarden をアクティヴにする
+; ==========================================================
+^!b::GoSub, FocusOrStartBitwarden
+
+FocusOrStartBitwarden:
+If WinExist("ahk_exe Bitwarden.exe")
+    WinActivate
+Else
+    Run,C:\Users\sano\AppData\Local\Programs\Bitwarden\Bitwarden.exe
+Return
+
+; ==========================================================
+; Ctrl+Alt+w で Windows Terminal をアクティヴにする
 ; ==========================================================
 ^!w::GoSub, FocusOrStartWt
 
