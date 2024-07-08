@@ -1,4 +1,12 @@
 ﻿; ==========================================================
+; WSLを常時起動しておく
+; ==========================================================
+Run, C:\WINDOWS\system32\wsl.exe -d Ubuntu-18.04,, Min
+WinWait, ahk_class ConsoleWindowClass
+WinHide, ahk_class ConsoleWindowClass
+
+
+; ==========================================================
 ; Alt + f8 で Alt + →、↑、エンター、Alt + ← をする
 ; MSTerminal + Vim での phpunit 用
 ; ==========================================================
@@ -66,38 +74,38 @@ Return
 ; ==========================================================
 ; Ctrl+Alt+v で Vavaldi をアクティヴにする
 ; ==========================================================
-^!v::GoSub, FocusOrStartStation
-
-FocusOrStartStation:
-If WinExist("ahk_exe vivaldi.exe")
-    WinActivate
-Else
-    Run,E:\Documents\nextCloud\sano\Documents\Vivaldi\Application\vivaldi.exe
-Return
+;^!v::GoSub, FocusOrStartStation
+;
+;FocusOrStartStation:
+;If WinExist("ahk_exe vivaldi.exe")
+;    WinActivate
+;Else
+;    Run,E:\Documents\nextCloud\sano\Documents\Vivaldi\Application\vivaldi.exe
+;Return
 
 ; ==========================================================
 ; Ctrl+Alt+C で chrome をアクティヴにする
 ; ==========================================================
-^!c::GoSub, FocusOrStartChrome
-
-FocusOrStartChrome:
-If WinExist("ahk_exe chrome.exe")
-    WinActivate
-Else
-    Run,C:\Programs\chromium\chrome.exe
-Return
+;^!c::GoSub, FocusOrStartChrome
+;
+;FocusOrStartChrome:
+;If WinExist("ahk_exe chrome.exe")
+;    WinActivate
+;Else
+;    Run,C:\Programs\chromium\chrome.exe
+;Return
 
 ; ==========================================================
 ; Ctrl+Alt+e で Excel をアクティヴにする
 ; ==========================================================
-^!e::GoSub, FocusOrStartExcel
-
-FocusOrStartExcel:
-If WinExist("ahk_exe Excel.exe")
-    WinActivate
-Else
-    Run,"C:\Program Files\Microsoft Office 15\root\office15\EXCEL.EXE"
-Return
+;^!e::GoSub, FocusOrStartExcel
+;
+;FocusOrStartExcel:
+;If WinExist("ahk_exe Excel.exe")
+;    WinActivate
+;Else
+;    Run,"C:\Program Files\Microsoft Office 15\root\office15\EXCEL.EXE"
+;Return
 
 ; ==========================================================
 ; Ctrl+Alt+k で KeepassXC をアクティヴにする
@@ -114,14 +122,14 @@ Return
 ; ==========================================================
 ; Ctrl+Alt+b で Bitwarden をアクティヴにする
 ; ==========================================================
-^!b::GoSub, FocusOrStartBitwarden
-
-FocusOrStartBitwarden:
-If WinExist("ahk_exe Bitwarden.exe")
-    WinActivate
-Else
-    Run,C:\Users\sano\AppData\Local\Programs\Bitwarden\Bitwarden.exe
-Return
+;^!b::GoSub, FocusOrStartBitwarden
+;
+;FocusOrStartBitwarden:
+;If WinExist("ahk_exe Bitwarden.exe")
+;    WinActivate
+;Else
+;    Run,C:\Users\sano\AppData\Local\Programs\Bitwarden\Bitwarden.exe
+;Return
 
 ; ==========================================================
 ; Ctrl+Alt+w で Windows Terminal をアクティヴにする
@@ -141,3 +149,6 @@ Return
 ; Windows10で Win+Space での言語切替を無効にする
 ; ==========================================================
 #Space::
+
+Return
+
