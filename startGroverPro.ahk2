@@ -1,0 +1,24 @@
+winTitle := "Grover Pro"
+
+if WinExist(winTitle)
+{
+    return
+}
+
+; Grover Pro が存在しない場合は起動
+if !WinExist(winTitle)
+{
+    Run "C:\Program Files\WindowsApps\14610MatheusI.M.GroverPro_3.2.0.0_x64__jx8kt06yv8vw6\GroverPro.exe"
+    ; 起動を待つ
+    WinWait(winTitle)
+}
+
+; ウィンドウをアクティブにして移動し、最大化
+if WinExist(winTitle)
+{
+    WinActivate(winTitle)
+    WinRestore(winTitle)
+    WinMove(-3000, 0, 100, 100, winTitle)
+    WinWait(winTitle)
+    WinMaximize(winTitle)
+}
