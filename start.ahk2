@@ -18,3 +18,4 @@ FocusOrStartASR() {
     Else
         Run "C:\Programs\ASR\Asr.exe"
 }
+

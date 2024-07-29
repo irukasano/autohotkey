@@ -1,5 +1,23 @@
 winTitle := "Grover Pro"
 
+; ==========================================================
+; Ctl+Alt+Shif+P GroverPro Play/Stop Toggle
+; ==========================================================
+#HotIf WinExist(winTitle)
+^!+p::PlayStopGroverPro
+#HotIf
+
+PlayStopGroverPro() {
+    originalPid := WinGetPID()
+    WinActivate(winTitle)
+    Send "{Space}"
+    WinActivate("ahk_pid " originalPid)
+}
+
+; ==========================================================
+; スタートアップ
+; ==========================================================
+
 if WinExist(winTitle)
 {
     return
@@ -18,6 +36,7 @@ if WinExist(winTitle)
 {
     WinActivate(winTitle)
     WinRestore(winTitle)
+    sleep(100)
     WinMove(-3000, 0, 100, 100, winTitle)
     WinWait(winTitle)
     WinMaximize(winTitle)
