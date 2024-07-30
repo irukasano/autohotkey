@@ -1,0 +1,12 @@
+; ==========================================================
+; Ctrl+Alt+k で KeepassXC をアクティヴにする
+; ==========================================================
+^!k::FocusOrStartKeepassxc()
+
+FocusOrStartKeepassxc() {
+    if WinExist("ahk_exe KeePassXC.exe") {
+        WinActivate("ahk_exe KeePassXC.exe")
+    } else {
+        Run("C:\Program Files\KeePassXC\KeePassXC.exe")
+    }
+}

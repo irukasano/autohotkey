@@ -1,21 +1,12 @@
 Run "C:\Users\sano\Documents\autohotkey\startGroverPro.ahk2"
 Run "C:\Users\sano\Documents\autohotkey\startVivaldi.ahk2"
+Run "C:\Users\sano\Documents\autohotkey\startKeepassXC.ahk2"
+Run "C:\Users\sano\Documents\autohotkey\startASR.ahk2"
+Run "C:\Users\sano\Documents\autohotkey\startNotion.ahk2"
 
 ; ==========================================================
 ; Windows10で Win+Space での言語切替を無効にする
 ; ==========================================================
 #Space::return
 
-
-; ==========================================================
-; Ctrl+Alt+a で AS/R をアクティヴにする
-; ==========================================================
-^!a::FocusOrStartASR()
-
-FocusOrStartASR() {
-    If WinExist("ahk_exe Asr.exe")
-        WinActivate
-    Else
-        Run "C:\Programs\ASR\Asr.exe"
-}
 

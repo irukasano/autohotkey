@@ -8,10 +8,10 @@ winTitle := "Grover Pro"
 #HotIf
 
 PlayStopGroverPro() {
-    originalPid := WinGetPID()
+    originalHWND := WinGetID("A")
     WinActivate(winTitle)
-    Send "{Space}"
-    WinActivate("ahk_pid " originalPid)
+    Send("{Space}")
+    WinActivate(originalHWND)
 }
 
 ; ==========================================================

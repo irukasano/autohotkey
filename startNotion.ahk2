@@ -1,0 +1,33 @@
+; ==========================================================
+; Ctrl+Alt+Shift+t で Notion に新規タスクを作成する
+; ==========================================================
+^!+t::CreateNotionTaskPage()
+
+CreateNotionTaskPage() {
+    notionExe := "ahk_exe Notion.exe"
+    BlockInput true
+    If !WinExist(notionExe)
+    {
+        Run "C:\Users\sano\AppData\Local\Programs\Notion\Notion.exe"
+        WinWait(notionExe)
+    } else {
+        WinActivate(notionExe)
+        ;Send("!")
+    }
+    ;Sleep(1500)
+    ; 新規タブを開く
+    ;Send("^+t")
+    ;Sleep(4000)
+    ; 新規ページを作成する
+    Send("^n")
+    Sleep(1000)
+    ; 別ページに送る
+    Send("^+p")
+    ;Sleep(1000)
+    ; タスクリストに送る
+    ;Send("タスクリスト{Enter}")
+    ;Sleep(1500)
+    ;Send("{Enter}")
+    BlockInput false
+}
+

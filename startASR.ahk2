@@ -1,0 +1,12 @@
+; ==========================================================
+; Ctrl+Alt+a で AS/R をアクティヴにする
+; ==========================================================
+^!a::FocusOrStartASR()
+
+FocusOrStartASR() {
+    If WinExist("ahk_exe Asr.exe")
+        WinActivate
+    Else
+        Run "C:\Programs\ASR\Asr.exe"
+}
+
