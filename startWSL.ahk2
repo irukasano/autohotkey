@@ -1,0 +1,56 @@
+; WSL を起動してタスクトレイに最小化し、右クリックメニューで「表示」を追加
+
+; トレイアイコンの設定
+MyMenu := A_TrayMenu
+MyMenu.Delete()
+MyMenu.Add("表示", ShowWSL) ; "表示" メニュー項目を追加
+MyMenu.Add("非表示", HideWSL) ; "非表示" メニュー項目を追加
+MyMenu.Add("") ; 仕切りを追加
+MyMenu.Add("終了", ExitScript) ; "終了" メニュー項目を追加
+
+; WSL を起動
+Run("wsl.exe")
+; 取得したWSLウィンドウクラス名をここに挿入
+WSL_Class := "ConsoleWindowClass"
+
+; ウィンドウクラスを使ってWSLのウィンドウを待つ
+WinWait("ahk_class " WSL_Class)
+hWnd := WinExist("ahk_class " WSL_Class)
+
+; hWnd が取得できなかった場合の処理
+if (!hWnd) {
+    MsgBox "WSL ウィンドウのハンドルを取得できませんでした。"
+    return
+}
+
+; WSL ウィンドウを最小化
+WinHide("ahk_id " hWnd)
+
+; タスクトレイのアイコンとメニューを設定
+TraySetIcon("wsl.exe", 1)
+A_IconTip := "WSL Control"
+
+
+
+HideWSL(*) {
+    global hWnd
+    if (!hWnd) {
+        MsgBox "WSL ウィンドウが見つかりません。"
+        return
+    }
+    WinHide("ahk_id " hWnd)
+}
+
+ShowWSL(*) {
+    global hWnd
+    if (!hWnd) {
+        MsgBox "WSL ウィンドウが見つかりません。"
+        return
+    }
+    WinShow("ahk_id " hWnd)
+    WinActivate("ahk_id " hWnd)
+}
+
+ExitScript(*) {
+    ExitApp()
+}
