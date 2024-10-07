@@ -34,10 +34,12 @@ if !WinExist(winTitle)
 ; ウィンドウをアクティブにして移動し、最大化
 if WinExist(winTitle)
 {
+    BlockInput true
     WinActivate(winTitle)
     WinRestore(winTitle)
     sleep(100)
     WinMove(-3000, 0, 100, 100, winTitle)
     WinWait(winTitle)
     WinMaximize(winTitle)
+    BlockInput false
 }

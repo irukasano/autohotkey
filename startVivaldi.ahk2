@@ -7,7 +7,7 @@ if WinExist(winTitle)
 
 if !WinExist(winTitle)
 {
-    Run "E:\Documents\nextCloud\sano\Documents\Vivaldi\Application\vivaldi.exe"
+    Run "C:\Programs\Vivaldi\Application\vivaldi.exe"
     ; 起動を待つ
     WinWait(winTitle)
 }
@@ -15,9 +15,11 @@ if !WinExist(winTitle)
 ; ウィンドウをアクティブにして移動し、最大化
 if WinExist(winTitle)
 {
+    BlockInput true
     WinActivate(winTitle)
     WinRestore(winTitle)
     WinMove(-1000, 0, 100, 100, winTitle)
     WinWait(winTitle)
     WinMaximize(winTitle)
+    BlockInput false
 }
