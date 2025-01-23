@@ -37,7 +37,7 @@ if WinExist(winTitle)
     BlockInput true
     WinActivate(winTitle)
     WinRestore(winTitle)
-    sleep(100)
+    WinWait(winTitle)
     WinMove(-3000, 0, 100, 100, winTitle)
     WinWait(winTitle)
     WinMaximize(winTitle)
